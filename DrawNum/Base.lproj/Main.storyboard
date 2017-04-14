@@ -21,19 +21,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNR-54-IVn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4W-cU-Z4H" customClass="DrawView" customModule="DrawNum" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sh2-Mf-NCB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GWQ-Db-pZB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="GWQ-Db-pZB" firstAttribute="leading" secondItem="P4W-cU-Z4H" secondAttribute="leading" id="4p2-5p-2em"/>
+                                    <constraint firstItem="Sh2-Mf-NCB" firstAttribute="top" secondItem="P4W-cU-Z4H" secondAttribute="top" id="KlY-ge-ezW"/>
+                                    <constraint firstAttribute="trailing" secondItem="GWQ-Db-pZB" secondAttribute="trailing" id="QbO-ZU-plC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sh2-Mf-NCB" secondAttribute="bottom" id="dim-xz-Wa4"/>
+                                    <constraint firstItem="Sh2-Mf-NCB" firstAttribute="leading" secondItem="P4W-cU-Z4H" secondAttribute="leading" id="h7u-Ce-43P"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sh2-Mf-NCB" secondAttribute="trailing" id="ojQ-Sk-rnb"/>
+                                    <constraint firstAttribute="bottom" secondItem="GWQ-Db-pZB" secondAttribute="bottom" id="tef-Zd-7c4"/>
+                                    <constraint firstItem="GWQ-Db-pZB" firstAttribute="top" secondItem="P4W-cU-Z4H" secondAttribute="top" id="vvi-NQ-Tp7"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SNR-54-IVn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HdE-22-dBe"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SNR-54-IVn" secondAttribute="bottom" id="Rbq-5m-uSU"/>
-                            <constraint firstItem="SNR-54-IVn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rRF-K2-i04"/>
-                            <constraint firstAttribute="trailing" secondItem="SNR-54-IVn" secondAttribute="trailing" id="xd1-Q2-Avr"/>
+                            <constraint firstItem="P4W-cU-Z4H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9aF-F8-xcI"/>
+                            <constraint firstItem="P4W-cU-Z4H" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CL8-hY-wc0"/>
+                            <constraint firstAttribute="trailing" secondItem="P4W-cU-Z4H" secondAttribute="trailing" id="V21-2I-Q8L"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P4W-cU-Z4H" secondAttribute="bottom" id="d6Z-Rc-ajQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="drawView" destination="P4W-cU-Z4H" id="CGe-gd-epi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
