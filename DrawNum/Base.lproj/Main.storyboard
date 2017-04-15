@@ -30,16 +30,8 @@
                                     <constraint firstAttribute="height" constant="200" id="ScU-bj-JJo"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkD-si-zyX">
-                                <rect key="frame" x="28" y="32" width="63" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="search" destination="BYZ-38-t0r" eventType="touchUpInside" id="vzf-3t-sGy"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wou-8b-WeY">
-                                <rect key="frame" x="20" y="319" width="44" height="36"/>
+                                <rect key="frame" x="20" y="32" width="44" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -72,27 +64,35 @@
                                 <color key="textColor" red="0.00017274860541626076" green="0.42314769133277563" blue="0.0069668296713648334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkD-si-zyX">
+                                <rect key="frame" x="580" y="32" width="67" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Correct"/>
+                                <connections>
+                                    <action selector="correct" destination="BYZ-38-t0r" eventType="touchUpInside" id="7xE-4m-Pym"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XUo-fR-cyQ" secondAttribute="bottom" constant="20" id="2M8-60-XBb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wou-8b-WeY" secondAttribute="bottom" constant="20" id="BIT-U7-eJD"/>
                             <constraint firstItem="P4W-cU-Z4H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DeZ-n4-izJ"/>
                             <constraint firstItem="5uh-ad-h2o" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="ILL-xj-6LH"/>
-                            <constraint firstItem="wou-8b-WeY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ilf-8Y-LQ4"/>
+                            <constraint firstItem="CkD-si-zyX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="Y1p-dE-ovh"/>
+                            <constraint firstItem="wou-8b-WeY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="ef5-n4-FoH"/>
                             <constraint firstItem="5uh-ad-h2o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iQd-Vb-65E"/>
+                            <constraint firstItem="CkD-si-zyX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jX5-7u-M71"/>
                             <constraint firstItem="XUo-fR-cyQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="l9b-WI-3Ew"/>
                             <constraint firstItem="P4W-cU-Z4H" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nY9-rF-ItC"/>
+                            <constraint firstItem="wou-8b-WeY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pTF-5J-BGx"/>
                             <constraint firstItem="dkT-fL-0b3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t5U-aX-b6a"/>
-                            <constraint firstItem="CkD-si-zyX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="ukB-3h-p5b"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dkT-fL-0b3" secondAttribute="bottom" constant="20" id="x3C-7F-WSX"/>
-                            <constraint firstItem="CkD-si-zyX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="yNE-uJ-VWk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="drawView" destination="P4W-cU-Z4H" id="CGe-gd-epi"/>
+                        <outlet property="matchLabel" destination="5uh-ad-h2o" id="Qkh-ji-hKx"/>
                         <outlet property="nameTextField" destination="dkT-fL-0b3" id="PvN-x9-60t"/>
-                        <outlet property="resultLabel" destination="5uh-ad-h2o" id="AN3-w2-sLy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

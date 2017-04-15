@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+protocol DrawViewDelegate: class {
+    func didFinishDrawing(image: UIImage?)
+}
+
 class DrawView: UIView {
     
     private struct Geometry {
@@ -21,8 +25,16 @@ class DrawView: UIView {
         static let background = UIColor.black
     }
     
+    private struct Time {
+        static let betweenSwipes: TimeInterval = 0.2
+    }
+    
+    weak var delegate: DrawViewDelegate?
+    
     private var mainImageView = UIImageView()
     private var tempImageView = UIImageView()
+    
+    private var timer: Timer?
     
     private var lastPoint = CGPoint.zero
     private var swiped = false
@@ -70,16 +82,12 @@ class DrawView: UIView {
     }
 
     /* API */
-    func getImage() -> UIImage? {
-        guard let image = mainImageView.image else { return nil }
-        
-        return resizedImage(image: image, relativeSize: Geometry.downscaleRelativeSize)
-    }
     
     func reset() {
         mainImageView.image = nil
         tempImageView.image = nil
         backgroundColor = Color.background
+        timer?.invalidate()
     }
     
     /* Drawing */
@@ -89,6 +97,8 @@ class DrawView: UIView {
         if let touch = touches.first {
             lastPoint = touch.location(in: self)
         }
+        
+        timer?.invalidate()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -115,6 +125,16 @@ class DrawView: UIView {
         UIGraphicsEndImageContext()
         
         tempImageView.image = nil
+        
+        timer = Timer.scheduledTimer(withTimeInterval: Time.betweenSwipes, repeats: false) { [weak self] timer in
+            self?.timer?.invalidate()
+            
+            guard let image = self?.mainImageView.image else { return }
+            
+            let downscaledImage = self?.resizedImage(image: image, relativeSize: Geometry.downscaleRelativeSize)
+            self?.delegate?.didFinishDrawing(image: downscaledImage)
+        }
+    
     }
     
     private func drawLine(from: CGPoint, to: CGPoint) {

@@ -11,7 +11,7 @@ import Accelerate
 
 class Bitmap {
     
-    let name: String?
+    var name: String?
     let map: [Double]
     
     init?(map: [Double], name: String?) {

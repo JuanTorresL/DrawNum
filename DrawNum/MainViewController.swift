@@ -12,53 +12,84 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var drawView: DrawView!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var matchLabel: UILabel!
     
-    private var bitmapManager: BitmapManager!
+    fileprivate var bitmapManager: BitmapManager!
+    fileprivate var lastBitmap: Bitmap?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bitmapManagerSetup()
+        setupDrawView()
+        setupBitmapManager()
     }
     
     // MARK: Setup
     
-    private func bitmapManagerSetup() {
+    private func setupDrawView() {
+        drawView.delegate = self
+    }
+    
+    private func setupBitmapManager() {
         let pixelCount = drawView.downsizedWidth * drawView.downsizedHeight
         bitmapManager = BitmapManager(pixelCount: pixelCount)
     }
 
     // MARK: User Interaction
     
-    @IBAction func search() {
-        guard let bitmap = drawView.getImage()?.bitmap(name: nil) else { return }
-
-        if let match = bitmapManager.searchBitmap(bitmap) {
-            resultLabel.text = match
-        }
-        // TODO: ask to save?
+    @IBAction func correct() {
+        guard let bitmap = lastBitmap, bitmap.name != nil else { return }
+        // bitmap should include the name match found
+        save(bitmap: bitmap)
     }
     
+    // save current image bitmap with input name
     @IBAction func save() {
-        guard let name = nameTextField.text, name.characters.count == 1 else { return }
-        guard let image = drawView.getImage() else { return }
-        guard let bitmap = image.bitmap(name: name) else { return }
+        guard let bitmap = lastBitmap else { return }
         
-        bitmapManager.saveBitmap(bitmap)
-        clear()
+        guard let name = nameTextField.text, name.characters.count == 1
+            else { return } // one character at a time
+
+        bitmap.name = name
+        save(bitmap: bitmap)
     }
     
     @IBAction func clear() {
-        nameTextField.text = ""
-        resultLabel.text = ""
-        drawView.reset()
+        clearUI()
     }
     
-    @IBAction func resetData() {
-        
+    // MARK: Helper methods
+    
+    fileprivate func save(bitmap: Bitmap) {
+        bitmapManager.saveBitmap(bitmap)
+        clearUI()
     }
 
+    fileprivate func processBitmap(_ bitmap: Bitmap) {
+        let nameMatch = bitmapManager.searchBitmap(bitmap)
+        matchLabel.text = nameMatch
+        
+        bitmap.name = nameMatch
+        lastBitmap = bitmap
+    }
+    
+    fileprivate func clearUI() {
+        nameTextField.text = ""
+        matchLabel.text = ""
+        drawView.reset()
+        lastBitmap = nil
+        nameTextField.resignFirstResponder()
+    }
+}
+
+extension ViewController: DrawViewDelegate {
+    func didFinishDrawing(image: UIImage?) {
+        guard let bitmap = image?.bitmap(name: nil) else {
+            clear()
+            return
+        }
+        processBitmap(bitmap)
+    }
 }
 
 extension ViewController: UITextFieldDelegate {

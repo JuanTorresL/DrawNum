@@ -25,6 +25,7 @@ class BitmapManager {
             return lhsDist < rhsDist
         }
         
+        // TODO: check if best match's distance is lower than minimum required
         return sortedBitmaps.first?.name
     }
     
