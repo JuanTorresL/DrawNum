@@ -11,6 +11,7 @@
 		7342087E1EA1C11100DBB0A0 /* UIImage+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342087D1EA1C11100DBB0A0 /* UIImage+Bitmap.swift */; };
 		734208801EA1C1D400DBB0A0 /* BitmapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342087F1EA1C1D400DBB0A0 /* BitmapManager.swift */; };
 		734208821EA1C26600DBB0A0 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734208811EA1C26600DBB0A0 /* Bitmap.swift */; };
+		734208841EA1E4A200DBB0A0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734208831EA1E4A200DBB0A0 /* Accelerate.framework */; };
 		7355C90F1EA14CE4006DF6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355C90E1EA14CE4006DF6AA /* AppDelegate.swift */; };
 		7355C9111EA14CE4006DF6AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355C9101EA14CE4006DF6AA /* MainViewController.swift */; };
 		7355C9141EA14CE4006DF6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7355C9121EA14CE4006DF6AA /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		7342087D1EA1C11100DBB0A0 /* UIImage+Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Bitmap.swift"; sourceTree = "<group>"; };
 		7342087F1EA1C1D400DBB0A0 /* BitmapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitmapManager.swift; sourceTree = "<group>"; };
 		734208811EA1C26600DBB0A0 /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
+		734208831EA1E4A200DBB0A0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7355C90B1EA14CE4006DF6AA /* DrawNum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawNum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7355C90E1EA14CE4006DF6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7355C9101EA14CE4006DF6AA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				734208841EA1E4A200DBB0A0 /* Accelerate.framework in Frameworks */,
 				648ADA6492522BC3DD6F171A /* Pods_DrawNum.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +114,7 @@
 		C9C1D3AB44BC1BAEDCDAB2AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				734208831EA1E4A200DBB0A0 /* Accelerate.framework */,
 				90590BDE8B2BBCE3DE1C59D8 /* Pods_DrawNum.framework */,
 			);
 			name = Frameworks;

@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Accelerate
 
 class Bitmap {
     
-    let name: String
+    let name: String?
     let map: [Double]
     
-    init?(name: String, map: [Double]) {
+    init?(map: [Double], name: String?) {
         guard map.count > 0 else { return nil }
 
         self.name = name
@@ -23,5 +24,25 @@ class Bitmap {
     var pixelCount: Int {
         return map.count
     }
+}
 
+extension Bitmap {
+    func distance(other: Bitmap) -> Double? {
+        guard map.count == other.map.count else { return nil }
+        
+        let x = map
+        let y = other.map
+        
+        // Euclidean distance
+        var xMinusY = [Double](repeating: 0, count: x.count)
+        vDSP_vsubD(x, 1, y, 1, &xMinusY, 1, vDSP_Length(x.count))
+        
+        let xMinusY_Squared = xMinusY.map { return $0 * $0 }
+        
+        let sumOf_xMinusY_Squared = xMinusY_Squared.reduce(0, +)
+        
+        let distance = sqrt(sumOf_xMinusY_Squared)
+        
+        return distance
+    }
 }

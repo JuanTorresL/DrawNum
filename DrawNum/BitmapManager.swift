@@ -19,8 +19,13 @@ class BitmapManager {
     }
     
     func searchBitmap(_ bitmap: Bitmap) -> String? {
+        let sortedBitmaps = bitmaps.sorted { (lhs, rhs) -> Bool in
+            guard let lhsDist = lhs.distance(other: bitmap) else { return false }
+            guard let rhsDist = rhs.distance(other: bitmap) else { return true }
+            return lhsDist < rhsDist
+        }
         
-        return nil
+        return sortedBitmaps.first?.name
     }
     
     func saveBitmap(_ bitmap: Bitmap) {
@@ -31,11 +36,12 @@ class BitmapManager {
         // TODO: save in core date
     }
     
-    func reset() {
+    func resetData() {
         bitmaps.removeAll()
     }
     
     private func isValidBitmap(_ bitmap: Bitmap) -> Bool {
+        guard bitmap.name != nil else { return false }
         return bitmap.pixelCount == pixelCount
     }
 }

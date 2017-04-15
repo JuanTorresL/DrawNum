@@ -47,11 +47,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUo-fR-cyQ">
-                                <rect key="frame" x="596" y="319" width="51" height="36"/>
+                                <rect key="frame" x="599" y="319" width="48" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Reset"/>
+                                <state key="normal" title="Clear"/>
                                 <connections>
-                                    <action selector="reset" destination="BYZ-38-t0r" eventType="touchUpInside" id="6jh-xy-vUJ"/>
+                                    <action selector="clear" destination="BYZ-38-t0r" eventType="touchUpInside" id="snn-wn-fU8"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkT-fL-0b3">
@@ -66,13 +66,21 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6Nd-Pr-acN"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uh-ad-h2o">
+                                <rect key="frame" x="302" y="40" width="64" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" red="0.00017274860541626076" green="0.42314769133277563" blue="0.0069668296713648334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XUo-fR-cyQ" secondAttribute="bottom" constant="20" id="2M8-60-XBb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wou-8b-WeY" secondAttribute="bottom" constant="20" id="BIT-U7-eJD"/>
                             <constraint firstItem="P4W-cU-Z4H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DeZ-n4-izJ"/>
+                            <constraint firstItem="5uh-ad-h2o" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="ILL-xj-6LH"/>
                             <constraint firstItem="wou-8b-WeY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ilf-8Y-LQ4"/>
+                            <constraint firstItem="5uh-ad-h2o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iQd-Vb-65E"/>
                             <constraint firstItem="XUo-fR-cyQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="l9b-WI-3Ew"/>
                             <constraint firstItem="P4W-cU-Z4H" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nY9-rF-ItC"/>
                             <constraint firstItem="dkT-fL-0b3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t5U-aX-b6a"/>
@@ -84,6 +92,7 @@
                     <connections>
                         <outlet property="drawView" destination="P4W-cU-Z4H" id="CGe-gd-epi"/>
                         <outlet property="nameTextField" destination="dkT-fL-0b3" id="PvN-x9-60t"/>
+                        <outlet property="resultLabel" destination="5uh-ad-h2o" id="AN3-w2-sLy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
