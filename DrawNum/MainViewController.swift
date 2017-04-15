@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private struct ImageConfig {
+        static let downscaleRelativeSize: CGFloat = 0.10
+    }
 
     @IBOutlet weak var drawView: DrawView!
     
@@ -18,11 +22,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func printMatrix(_ sender: Any) {
-        guard let image = drawView.image else { return }
+        guard let image = drawView.getResizedImage(relativeSize: ImageConfig.downscaleRelativeSize) else { return }
         
-        if let pixelsMap = generatePixelsMap(image: image, type: .blackBackground) {
-            print(pixelsMap)
-        }
+        let pixelsMap = generatePixelsMap(image: image, type: .brightness)
+        
+        drawView.mainImageView.image = image
+        
+        let downsizedPixelsMap = generatePixelsMap(image: image, type: .brightness)
     }
     
     // MARK: Helper methods

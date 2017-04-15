@@ -26,13 +26,6 @@ class DrawView: UIView {
     private var lastPoint = CGPoint.zero
     private var swiped = false
     
-    /* Public vars */
-    
-    var image: UIImage? {
-        return mainImageView.image
-    }
-    
-    
     /* Initialization */
 
     override init(frame: CGRect) {
@@ -49,11 +42,15 @@ class DrawView: UIView {
     
     private func initialSetup() {
         addSubview(mainImageView)
+        mainImageView.contentMode = .scaleToFill
+        mainImageView.layer.magnificationFilter = kCAFilterNearest
         mainImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
         addSubview(tempImageView)
+        tempImageView.contentMode = .scaleToFill
+        tempImageView.layer.magnificationFilter = kCAFilterNearest
         tempImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -61,6 +58,12 @@ class DrawView: UIView {
         backgroundColor = Color.background
     }
 
+    /* API */
+    func getResizedImage(relativeSize: CGFloat) -> UIImage? {
+        guard let image = mainImageView.image else { return nil }
+        
+        return resizedImage(image: image, relativeSize: relativeSize)
+    }
     
     /* Drawing */
     
@@ -121,7 +124,20 @@ class DrawView: UIView {
         UIGraphicsEndImageContext()
     }
 
+    // MARK: Editing image
     
+    private func resizedImage(image: UIImage, relativeSize: CGFloat) -> UIImage? {
+        
+        let newWidth = image.size.width * relativeSize
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }
 
 

@@ -30,11 +30,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4W-cU-Z4H" customClass="DrawView" customModule="DrawNum" customModuleProvider="target">
-                                <rect key="frame" x="313" y="167" width="40" height="40"/>
+                                <rect key="frame" x="83" y="87" width="500" height="200"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="LTU-ac-KK9"/>
-                                    <constraint firstAttribute="height" constant="40" id="ScU-bj-JJo"/>
+                                    <constraint firstAttribute="width" constant="500" id="LTU-ac-KK9"/>
+                                    <constraint firstAttribute="height" constant="200" id="ScU-bj-JJo"/>
                                 </constraints>
                             </view>
                         </subviews>
