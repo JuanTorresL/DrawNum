@@ -30,28 +30,16 @@ extension UIImage {
         
         context?.draw(inputCGImage, in: CGRect(x: 0, y: 0, width: width, height: height))
         
-        // 2. Iterate and log
-        var grid = [[Double]]()
-        var currentPixel = 0
-        
-        for row in 0..<height {
-            grid.append([]) // new row
-            
-            for _ in 0..<width {
-                
-                let color = pixels[currentPixel]
-                let r = red(color)
-                let g = green(color)
-                let b = blue(color)
-                let brightness = Double(r+g+b) / 3.0
-                
-                grid[row].append(brightness)
-                
-                currentPixel += 1
-            }
+        // 2. Map color to brightness
+        let map = pixels.map { color -> Double in
+            let r = red(color)
+            let g = green(color)
+            let b = blue(color)
+            let brightness = Double(r+g+b) / 3.0
+            return floor(brightness)
         }
-        
-        return Bitmap(name: name, map: grid)
+
+        return Bitmap(name: name, map: map)
     }
     
     // MARK: Bitmask helper methods

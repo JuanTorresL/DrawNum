@@ -11,23 +11,17 @@ import Foundation
 class Bitmap {
     
     let name: String
-    let map: [[Double]]
+    let map: [Double]
     
-    init?(name: String, map: [[Double]]) {
+    init?(name: String, map: [Double]) {
         guard map.count > 0 else { return nil }
-        guard map.first!.count == map.count else { return nil }
-        
+
         self.name = name
         self.map = map
     }
     
-    var width: Int {
-        guard map.count > 0 else { return 0 }
-        
-        return map.first!.count
-    }
-    
-    var height: Int {
+    var pixelCount: Int {
         return map.count
     }
+
 }

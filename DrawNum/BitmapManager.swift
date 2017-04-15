@@ -10,14 +10,17 @@ import Foundation
 
 class BitmapManager {
     
-    let mapWidth: Int
-    let mapHeight: Int
-    
+    let pixelCount: Int
+
     fileprivate(set) var bitmaps: [Bitmap] = []
     
-    init(mapWidth: Int, mapHeight: Int) {
-        self.mapWidth = mapWidth
-        self.mapHeight = mapHeight
+    init(pixelCount: Int) {
+        self.pixelCount = pixelCount
+    }
+    
+    func searchBitmap(_ bitmap: Bitmap) -> String? {
+        
+        return nil
     }
     
     func saveBitmap(_ bitmap: Bitmap) {
@@ -33,6 +36,6 @@ class BitmapManager {
     }
     
     private func isValidBitmap(_ bitmap: Bitmap) -> Bool {
-        return bitmap.width == self.mapWidth && bitmap.height == self.mapHeight
+        return bitmap.pixelCount == pixelCount
     }
 }

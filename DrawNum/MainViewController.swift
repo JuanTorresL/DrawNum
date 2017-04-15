@@ -24,9 +24,8 @@ class ViewController: UIViewController {
     // MARK: Setup
     
     private func bitmapManagerSetup() {
-        let width = drawView.downsizedWidth
-        let height = drawView.downsizedHeight
-        bitmapManager = BitmapManager(mapWidth: width, mapHeight: height)
+        let pixelCount = drawView.downsizedWidth * drawView.downsizedHeight
+        bitmapManager = BitmapManager(pixelCount: pixelCount)
     }
 
     // MARK: User Interaction
