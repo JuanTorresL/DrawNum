@@ -16,14 +16,21 @@ class DrawView: UIView {
     }
     
     private struct Color {
-        static let brush = UIColor.blue
+        static let brush = UIColor.green
+        static let background = UIColor.black
     }
     
-    private var mainImageView = UIImageView()
+    var mainImageView = UIImageView()
     private var tempImageView = UIImageView()
     
     private var lastPoint = CGPoint.zero
     private var swiped = false
+    
+    /* Public vars */
+    
+    var image: UIImage? {
+        return mainImageView.image
+    }
     
     
     /* Initialization */
@@ -50,6 +57,8 @@ class DrawView: UIView {
         tempImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        backgroundColor = Color.background
     }
 
     
@@ -111,7 +120,7 @@ class DrawView: UIView {
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
-    
+
     
 }
 
