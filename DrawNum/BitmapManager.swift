@@ -11,22 +11,33 @@ import Foundation
 class BitmapManager {
     
     let pixelCount: Int
+    let maximumMatchDistance: Double?
 
     fileprivate(set) var bitmaps: [Bitmap] = []
     
-    init(pixelCount: Int) {
+    init(pixelCount: Int, maximumMatchDistance: Double? = nil) {
         self.pixelCount = pixelCount
+        self.maximumMatchDistance = maximumMatchDistance
     }
     
     func searchBitmap(_ bitmap: Bitmap) -> String? {
+        // sort bitmaps by distance (ascendant order)
         let sortedBitmaps = bitmaps.sorted { (lhs, rhs) -> Bool in
             guard let lhsDist = lhs.distance(other: bitmap) else { return false }
             guard let rhsDist = rhs.distance(other: bitmap) else { return true }
             return lhsDist < rhsDist
         }
         
-        // TODO: check if best match's distance is lower than minimum required
-        return sortedBitmaps.first?.name
+        guard let closestBitmap = sortedBitmaps.first else { return nil } // no bitmaps
+
+        // if max dist available, check if max distance requirement is met
+        if let maxDist = maximumMatchDistance {
+            guard let dist = closestBitmap.distance(other: bitmap), dist <= maxDist
+                else { return nil }
+            print("Closest Bitmap distance: \(dist)")
+        }
+        
+        return closestBitmap.name
     }
     
     func saveBitmap(_ bitmap: Bitmap) {

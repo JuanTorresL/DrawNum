@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     private func setupBitmapManager() {
         let pixelCount = drawView.downsizedWidth * drawView.downsizedHeight
-        bitmapManager = BitmapManager(pixelCount: pixelCount)
+        bitmapManager = BitmapManager(pixelCount: pixelCount, maximumMatchDistance: 999999999999.0)
     }
 
     // MARK: User Interaction
