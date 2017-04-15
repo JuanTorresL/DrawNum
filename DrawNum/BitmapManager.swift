@@ -20,10 +20,16 @@ class BitmapManager {
         self.mapHeight = mapHeight
     }
     
-    func addBitmap(_ bitmap: Bitmap) {
+    func saveBitmap(_ bitmap: Bitmap) {
         guard isValidBitmap(bitmap) else { return }
         
         bitmaps.append(bitmap)
+        
+        // TODO: save in core date
+    }
+    
+    func reset() {
+        bitmaps.removeAll()
     }
     
     private func isValidBitmap(_ bitmap: Bitmap) -> Bool {

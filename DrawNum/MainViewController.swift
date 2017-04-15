@@ -10,23 +10,51 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private struct ImageConfig {
-        static let downscaleRelativeSize: CGFloat = 0.10
-    }
-
     @IBOutlet weak var drawView: DrawView!
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    private var bitmapManager: BitmapManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    @IBAction func printMatrix(_ sender: Any) {
-        guard let image = drawView.getResizedImage(relativeSize: ImageConfig.downscaleRelativeSize) else { return }
         
-        drawView.mainImageView.image = image
+        bitmapManagerSetup()
     }
     
+    // MARK: Setup
+    
+    private func bitmapManagerSetup() {
+        let width = drawView.downsizedWidth
+        let height = drawView.downsizedHeight
+        bitmapManager = BitmapManager(mapWidth: width, mapHeight: height)
+    }
+
+    // MARK: User Interaction
+    
+    @IBAction func search() {
+        
+    }
+    
+    @IBAction func save() {
+        guard let image = drawView.getImage() else { return }
+        guard let name = nameTextField.text, name.characters.count == 1 else { return }
+        guard let bitmap = image.bitmap(name: name) else { return }
+        
+        bitmapManager.saveBitmap(bitmap)
+        nameTextField.text = ""
+        drawView.reset()
+    }
+    
+    @IBAction func reset() {
+        
+    }
 
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
+    }
+}

@@ -12,9 +12,9 @@ import UIKit
 
 extension UIImage {
     
-    func pixelsMap(image: UIImage) -> [[Double]]? {
+    func bitmap(name: String) -> Bitmap? {
         // 1. Get pixels of image
-        guard let inputCGImage = image.cgImage else { return nil }
+        guard let inputCGImage = self.cgImage else { return nil }
         let width = inputCGImage.width
         let height = inputCGImage.height
         
@@ -51,7 +51,7 @@ extension UIImage {
             }
         }
         
-        return grid
+        return Bitmap(name: name, map: grid)
     }
     
     // MARK: Bitmask helper methods

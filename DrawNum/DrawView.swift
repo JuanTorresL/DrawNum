@@ -13,6 +13,7 @@ class DrawView: UIView {
     
     private struct Geometry {
         static let brushWidth: CGFloat = 20
+        static let downscaleRelativeSize: CGFloat = 0.10
     }
     
     private struct Color {
@@ -20,11 +21,21 @@ class DrawView: UIView {
         static let background = UIColor.black
     }
     
-    var mainImageView = UIImageView()
+    private var mainImageView = UIImageView()
     private var tempImageView = UIImageView()
     
     private var lastPoint = CGPoint.zero
     private var swiped = false
+    
+    var downsizedWidth: Int {
+        let width = frame.width * Geometry.downscaleRelativeSize
+        return Int(width)
+    }
+    
+    var downsizedHeight: Int {
+        let height = frame.height * Geometry.downscaleRelativeSize
+        return Int(height)
+    }
     
     /* Initialization */
 
@@ -59,10 +70,16 @@ class DrawView: UIView {
     }
 
     /* API */
-    func getResizedImage(relativeSize: CGFloat) -> UIImage? {
+    func getImage() -> UIImage? {
         guard let image = mainImageView.image else { return nil }
         
-        return resizedImage(image: image, relativeSize: relativeSize)
+        return resizedImage(image: image, relativeSize: Geometry.downscaleRelativeSize)
+    }
+    
+    func reset() {
+        mainImageView.image = nil
+        tempImageView.image = nil
+        backgroundColor = Color.background
     }
     
     /* Drawing */
