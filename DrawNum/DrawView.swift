@@ -160,6 +160,22 @@ class DrawView: UIView {
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
+    
+    func drawText(_ text: String) {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: frame.size.width, height: frame.size.height))
+        let img = renderer.image { ctx in
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attrs = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 200)!, NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: Color.brush]
+            
+            text.draw(with: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+            
+        }
+        
+        mainImageView.image = img
+        tempImageView.image = nil
+    }
 
     // MARK: Editing image
     

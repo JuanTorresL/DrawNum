@@ -58,6 +58,12 @@ class ViewController: UIViewController {
         clearUI()
     }
     
+    @IBAction func write() {
+        guard let text = nameTextField.text, text.characters.count == 1 else { return }
+        
+        drawView.drawText(text)
+    }
+    
     // MARK: Helper methods
     
     fileprivate func save(bitmap: Bitmap) {
